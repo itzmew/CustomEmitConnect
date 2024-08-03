@@ -15,7 +15,6 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 add_executable(CustomEmitConnect
   main.cpp
   signal.h
-  myobject.h myobject.cpp
   somepublisher.h somepublisher.cpp
   somesubscriber.h somesubscriber.cpp
 )
