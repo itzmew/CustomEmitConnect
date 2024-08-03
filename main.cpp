@@ -1,16 +1,17 @@
-#include "myobject.h"
+#include "somepublisher.h"
+#include "somesubscriber.h"
 
 int main() {
-    MyObject sender;
-    MyObject receiver;
+    SomePublisher publisher;
+    SomeSubscriber subscriber;
 
-    sender.m_intSignal.myConnect([&receiver](int intValue) { receiver.onIntSignal(intValue); });
-    sender.m_stringSignal.myConnect([&receiver](std::string stringValue) { receiver.onStringSignal(stringValue); });
-    sender.m_doubleAndBoolSignal.myConnect([&receiver](double doubleValue, bool flag) { receiver.onDoubleAndBoolSignal(doubleValue, flag); });
+    publisher.m_intSignal.addSubscriber([&](int intValue) { subscriber.onIntSignal(intValue); });
+    publisher.m_stringSignal.addSubscriber([&](std::string stringValue) { subscriber.onStringSignal(stringValue); });
+    publisher.m_doubleAndBoolSignal.addSubscriber([&](double doubleValue, bool flag) { subscriber.onDoubleAndBoolSignal(doubleValue, flag); });
 
-    sender.emitIntSignal(42);
-    sender.emitStringSignal("Hello, world!");
-    sender.emitDoubleAndBoolSignalAsync(3.14, true);
+    publisher.emitIntSignal(42);
+    publisher.emitStringSignal("Hello, world!");
+    publisher.emitDoubleAndBoolSignalAsync(3.14, true);
 
     return 0;
 }

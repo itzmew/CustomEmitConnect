@@ -9,28 +9,28 @@
 template<typename... Args>
 class Signal {
 public:
-    using SlotType = std::function<void(Args... args)>;
+    using SubscriberType = std::function<void(Args... args)>;
 
-    void myConnect(const SlotType& slot) {
+    void addSubscriber(const SubscriberType& subscriber) {
         std::lock_guard<std::mutex> lock(m_mutex);
-        m_slots.emplace_back(slot);
+        m_subscribers.emplace_back(subscriber);
     }
 
-    void myEmit(Args... args) const {
+    void notify(Args... args) const {
         std::lock_guard<std::mutex> lock(m_mutex);
-        for (const auto& slot : m_slots) {
-            slot(args...);
+        for (const auto& subscriber : m_subscribers) {
+            subscriber(args...);
         }
     }
 
-    void myEmitAsync(Args... args) const {
+    void notifyAsync(Args... args) const {
         std::vector<std::future<void>> futures;
 
         {
             std::lock_guard<std::mutex> lock(m_mutex);
-            for (const auto& slot : m_slots) {
-                futures.emplace_back(std::async(std::launch::async, [slot, args...]() {
-                    slot(args...);
+            for (const auto& subscriber : m_subscribers) {
+                futures.emplace_back(std::async(std::launch::async, [subscriber, args...]() {
+                    subscriber(args...);
                 }));
             }
         }
@@ -42,5 +42,5 @@ public:
 
 private:
     mutable std::mutex m_mutex;
-    std::vector<SlotType> m_slots;
+    std::vector<SubscriberType> m_subscribers;
 };

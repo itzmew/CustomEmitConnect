@@ -16,6 +16,8 @@ add_executable(CustomEmitConnect
   main.cpp
   signal.h
   myobject.h myobject.cpp
+  somepublisher.h somepublisher.cpp
+  somesubscriber.h somesubscriber.cpp
 )
 target_link_libraries(CustomEmitConnect Qt${QT_VERSION_MAJOR}::Core)
 
