@@ -1,0 +1,9 @@
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/CustomEmitConnect.dir
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/edit_cache.dir
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/rebuild_cache.dir
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/list_install_components.dir
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install.dir
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install/local.dir
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install/strip.dir
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/CustomEmitConnect_autogen_timestamp_deps.dir
+/home/mew/CustomEmitConnect/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/CustomEmitConnect_autogen.dir
