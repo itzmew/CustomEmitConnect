@@ -11,9 +11,17 @@ class Signal {
 public:
     using SubscriberType = std::function<void(Args... args)>;
 
-    void addSubscriber(const SubscriberType& subscriber) {
+   void addSubscriber(const SubscriberType& subscriber) {
         std::lock_guard<std::mutex> lock(m_mutex);
         m_subscribers.emplace_back(subscriber);
+   }
+
+    template <typename T>
+    void addSubscriber(T& instance, void (T::*func)(Args...)) {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        m_subscribers.emplace_back([&instance, func](Args... args) {
+            (instance.*func)(args...);
+        });
     }
 
     void notify(Args... args) const {
